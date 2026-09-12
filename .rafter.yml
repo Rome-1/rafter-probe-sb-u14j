@@ -1,11 +1,13 @@
 # Live-probe config for sb-u14j / PR #53 (e158bb7).
-# Deliberately uses ONLY the camelCase spelling + R-XXXXX rule selector that
-# a customer would copy from CONFIG.md / the hosted report UI - the exact
-# shapes the bug report says were silently dropped pre-fix.
+# Corrected per Mayor's audit: R-310C9 is the id that actually appears in
+# the report for the insecure-random-for-security finding (my earlier
+# R-91AFF was a self-inflicted hash-preimage error, not a backend result).
+# excludePaths kept in camelCase form to re-confirm that half against a
+# stable revision pair (00260-kwf for both C and D).
 scan:
   excludePaths:
     - "token.py"
   ignore:
     - paths: ["**"]
-      rules: ["R-91AFF"]
-      reason: "probe sb-u14j: suppressing insecure-random-for-security on app.js via R-XXXXX display id"
+      rules: ["R-310C9"]
+      reason: "probe sb-u14j: suppressing insecure-random-for-security on app.js via corrected R-XXXXX display id"
